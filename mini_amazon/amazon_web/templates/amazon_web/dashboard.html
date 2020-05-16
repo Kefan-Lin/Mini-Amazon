@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<script language="JavaScript" type="text/javascript">
+    function play() {
+        var myAuto = document.getElementById('myaudio');
+        myAuto.play();
+    }
+    function closePlay() {
+        var myAuto = document.getElementById('myaudio');
+        myAuto.pause();
+        myAuto.load();
+    }
+    function pause() {
+        var myAuto = document.getElementById('myaudio');
+        myAuto.pause();
+    }
+</script>
+<body>
+<audio src="https://sharefs.yun.kugou.com/202004241139/df31ab7477c0523281341aec912dbaa8/G203/M08/07/01/a4cBAF5sgPiAGj-JAEKYCpbtmZk110.mp3" id="myaudio" controls="controls" loop="true" hidden="true"></audio>
+    <h1>Main Page</h1>
+    <h2>Account Info</h2>
+    <ul>
+        <li>Username: {{ user.username }}</li>
+        <li>Email: {{ user.email }}</li>
+    </ul>
+    <br>
+    *******Music Control*******<br>
+    <input type="button" onclick="play()" value="Play bgm" />
+    <input type="button" onclick="pause()" value="Pause bgm" />
+    <input type="button" onclick="closePlay()" value="Close bgm" /><br>
+    *******Music Control*******
+    <h3>What do you want to do?:</h3><br>
+    <a href="{% url 'amazon_web:searchProduct' user.id %}">Search to buy product</a><br>
+    <a href="{% url 'amazon_web:query' user.id %}">Query my packages</a><br>
+    <a href="{% url 'amazon_web:rate' user.id %}">Rate my completed orders</a><br>
+    <a href="{% url 'amazon_web:edit_profile' user.id %}">Edit my profile</a><br>
+    <form action="{% url 'amazon_web:logout' %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Log Out" name="logout">
+    </form>
+    <br>
+</body>
+</html>
