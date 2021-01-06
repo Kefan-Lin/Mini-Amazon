@@ -50,10 +50,10 @@ def sendToWorld_th(socket_world,conn):
 def recvFromUPS_th(socket_UPS,conn):
     cursor = conn.cursor()
     timeout = 1
-    sender = 'kflin1996@gmail.com'
+    sender = 'xxxxxxx@gmail.com'
     smtpObj = smtplib.SMTP('smtp.gmail.com', 587)
     smtpObj.starttls()
-    smtpObj.login(sender, r'fdsa961224')
+    smtpObj.login(sender, r'abcd1234') 
     while True:
         # recv the UMsg
         ups_response = IG1_pb2.UMsg()
